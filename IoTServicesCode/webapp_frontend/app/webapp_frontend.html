@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="https://www.raspberrypi.org/app/uploads/2011/10/Raspi-PGB001.png">
+        <title>
+            DSO - Interfaz de Usuario
+        </title>
+        <link rel="stylesheet" type="text/css" href="webapp_style.css">
+        <meta charset="ISO-8859-1">
+    </head>
+    <body>
+        <div id="home">    
+            <h1>Mediciones de los sensores</h1>
+            <p>Resultados de las mediciones obtenidas por los sensores</p>
+            
+            <div id="devices">
+                <div class="devices_row" id="device_id_col">
+                    <div class="devices_col">Device</div>
+                    <div class="devices_col">Undefined</div>
+                </div>
+                <div class="devices_row" id="device_state_col">
+                    <div class="devices_col">State</div>
+                    <div class="devices_col">Undefined</div>
+                </div>
+                <div class="devices_row" id="device_location_col">
+                    <div class="devices_col">Location</div>
+                    <div class="devices_col">Undefined</div>
+                </div>
+                <div class="devices_row" id="device_timestamp_col">
+                    <div class="devices_col">Time</div>
+                    <div class="devices_col">Undefined</div>
+                </div>
+                <div id="buttons">
+                    <button class="device_button" onclick="showMeasures()">Measurements</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="Raspberry">    
+            <h1>Mediciones de los sensores</h1>
+            <div id= "description">
+                <p id = "description_id">Undefined</p>
+                <p id = "description_state">Undefined</p>
+                <p id = "description_location">Undefined</p>
+                <p id = "description_timestamp">Undefined</p>
+            </div>
+            <div id="date">
+                <p>Since:</p>
+                <input id="start_date" type="date" value="2021-01-01">
+                <p>Until:</p>
+                <input id="end_date" type="date" value="2021-12-31">
+                <button class="date_button" onclick="filterMeasurements()">Filter</button>
+            </div>
+            
+                <table id=measurements>
+                    <tr id = "measurements_labels">
+                        <th>Time</th>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                    </tr>
+                    <tr class="measurement_instance">
+                        <td>Tiempo 1</td>
+                        <td>Temp 1</td>
+                        <td>Humd 1</td>
+                    </tr>
+                </table>
+                <button class="return_button" onclick="showHome()">Return</button>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="webapp_script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,182 @@
+body {
+    background-color: rgb(119, 183, 255);
+    font-family: Roboto;
+    padding: 2% 5%;
+    text-align: center;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 3em;
+}
+
+p {
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+#home{
+    display: block;
+}
+
+#devices {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 0;
+    color: rgb(30, 32, 117);
+}
+
+.devices_row > .devices_col:first-child {
+    padding: 2%;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black;
+}
+
+.devices_row > .devices_col:nth-child(odd){
+    background-color: rgb(174, 204, 251);
+}
+
+#devices > .devices_row {
+    background-color: rgb(210, 227, 255);
+    flex: 2 1 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.devices_col {
+    padding: 2%;
+    border:rgb(30, 32, 117) 1px solid;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 0;
+    margin-top: 35px;
+}
+
+.device_button {
+    margin-left: 2%;
+    flex: 2 1 0;
+    background-color: rgb(27, 53, 102);
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.device_button:hover {
+    background-color: rgb(143, 172, 218);
+    color: black;
+  }
+
+
+
+
+/*MEASUREMENTS*/
+
+
+#date{
+    display: flex;
+    flex-direction: row;
+    flex-basis: 0;
+    margin-left: 32%; 
+    margin-right: auto;
+    margin-top: 2%;
+    width: 50%;
+}
+
+#date > p{
+    font-size: 1em;
+    margin: 1.6% 0% 0% 3%;
+ 
+}
+
+input[type=date] {
+    margin: 1.5% 3% 0% 1%;
+    max-height: 18px;
+}
+
+.date_button {
+    margin-top: 1.5%;
+    margin-left: 3%;
+    width: 11%;
+    background-color: rgb(27, 53, 102);
+    border: 1px solid white;
+    color: white;
+    padding: 2px;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.date_button:hover {
+    background-color: rgb(143, 172, 218);
+    color: black;
+  }
+
+
+#Raspberry{
+    display: none;
+}
+
+#measurements{
+    font-size: 1.2em;
+    margin: 2%;
+    border-collapse: collapse;
+    min-width: 70%;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 3%;
+    border-radius: 10em;
+    border:rgb(30, 32, 117) 1px solid;
+  }
+
+th, td {
+    color: black;
+    vertical-align: middle;
+    border:rgb(30, 32, 117) 1px solid;
+    border-collapse: collapse;
+    padding: 0.3em;
+    text-align: center;
+    width: 20%;
+}
+
+td{
+    color: rgb(30, 32, 117);
+}
+
+
+tr:nth-child(even) {
+    background: rgb(210, 227, 255);
+}
+  
+
+tr:nth-child(odd) {
+    background: rgb(174, 204, 251);
+}
+
+
+.return_button {
+    width: 8%;
+    background-color: rgb(27, 53, 102);
+    border: 1px solid white;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 21px;
+    border-radius: 5px;
+}
+
+.return_button:hover {
+    background-color: rgb(143, 172, 218);
+    color: black;
+}
+
+#description p{
+    display: inline-block;
+    margin: 0 2%;
+    
+}

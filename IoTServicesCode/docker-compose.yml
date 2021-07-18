@@ -1,0 +1,70 @@
+version: '3'
+
+services: 
+    message_broker:
+        build: ./message_broker
+        ports:
+            - '1883:1883'
+        volumes:
+            - ./message_broker/app/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    mariaDB:
+        image: 'mariadb:latest'
+        environment:
+            - MYSQL_ROOT_PASSWORD=I don't believe in passwords, sorry
+    measurements_microservice:
+        build: ./microservices/measurements_microservice
+        ports:
+            - '5001:5001'
+        links:
+            - "mariaDB:mariaDB"
+        environment:
+            - HOST=0.0.0.0
+            - PORT=5001
+            - DBHOST=mariaDB
+            - DBUSER=iot_user
+            - DBPASSWORD=I don't believe in passwords, sorry
+            - DBDATABASE=final_practice
+        depends_on: 
+            - mariaDB
+    devices_microservice:
+        build: ./microservices/devices_microservice
+        ports:
+            - '5002:5002'
+        links:
+            - "mariaDB:mariaDB"
+        environment:
+            - HOST=0.0.0.0
+            - PORT=5002
+            - DBHOST=mariaDB
+            - DBUSER=iot_user
+            - DBPASSWORD=I don't believe in passwords, sorry
+            - DBDATABASE=final_practice
+        depends_on: 
+            - mariaDB
+    message_router:
+        build: ./message_router
+        environment:
+            - BROKER_ADDRESS=This IP was not found, sorry
+            - BROKER_PORT=1883
+            - BROKER_KEEP_ALIVE=60
+            - BROKER_USER=xD
+            - BROKER_PWD=xD
+            - MEASUREMENTS_MICROSERVICE_ADDRESS=AAAAAAAAAAAH! THERE IS NO IP HERE
+            - MEASUREMENTS_MICROSERVICE_PORT=5001
+            - DEVICES_MICROSERVICE_ADDRESS=AAAAAAAAAAAH! THERE IS NO IP HERE
+            - DEVICES_MICROSERVICE_PORT=5002
+    webapp_backend:
+        build: ./webapp_backend
+        ports:
+            - '5000:5000'
+        environment:
+            - MEASUREMENTS_MICROSERVICE_ADDRESS=This IP was not found, sorry
+            - MEASUREMENTS_MICROSERVICE_PORT=5001
+            - DEVICES_MICROSERVICE_ADDRESS=This IP was not found, sorry
+            - DEVICES_MICROSERVICE_PORT=5002
+            - HOST=0.0.0.0
+            - PORT=5000
+    webapp_frontend:
+        build: ./webapp_frontend
+        ports:
+            - '80:80'
